@@ -30,11 +30,11 @@ pipeline {
     post {
         success {
             emailext body: '''Pipeline Success
-https://github.com/anastase-yme/test.git''', subject: 'Test', to: 'fyodorova.aaee@gmail.com'
+https://github.com/anastase-yme/test.git''', subject: 'Test', to: 'selena_mun@mail.ru'
         }
         failure {
             emailext body: '''Pipeline Failure
-https://github.com/anastase-yme/test.git''', subject: 'Test', to: 'fyodorova.aaee@gmail.com'
+https://github.com/anastase-yme/test.git''', subject: 'Test', to: 'selena_mun@mail.ru'
         }
     }
 }
