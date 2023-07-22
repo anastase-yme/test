@@ -10,15 +10,16 @@ pipeline {
             steps {
                 sh 'date "+%Y-%m-%d %H:%M:%S - PRjob executed" > job.log'
                 sh 'git add job.log; git commit -m "Add log"; git push origin main'
+                sh 'git config --global user.email "selena_mun@mail.ru"; git config --global user.name "Anastasia"'
             }
         }
     }
     post {
         success {
-            mail to: 'selena_mun@mail.ru', subject: 'Pipeline Success', body: 'Repo URL: git@github.com:anastase-yme/test.git'
+            mail to: 'fyodorova.aaee@gmail.com', subject: 'Pipeline Success', body: 'Repo URL: git@github.com:anastase-yme/test.git'
         }
         failure {
-            mail to: 'selena_mun@mail.ru', subject: 'Pipeline Failure', body: 'Repo URL: git@github.com:anastase-yme/test.git'
+            mail to: 'fyodorova.aaee@gmail.com', subject: 'Pipeline Failure', body: 'Repo URL: git@github.com:anastase-yme/test.git'
         }
     }
 }
