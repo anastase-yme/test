@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone repository') {
+            steps {
+                git branch: 'main', credentialsId: 'jenkins_git', url: 'git@github.com:anastase-yme/test.git'
+            }
+        }
+        stage('Create and commit log file') {
+            steps {
+                sh 'date "+%Y-%m-%d %H:%M:%S - PRjob executed" > job.log'
+                sh 'git add job.log; git commit -m "Add log"; git push origin main'
+            }
+        }
+    }
+    post {
+        success {
+            mail to: 'selena_mun@mail.ru', subject: 'Pipeline Success', body: 'Repo URL: git@github.com:anastase-yme/test.git'
+        }
+        failure {
+            mail to: 'selena_mun@mail.ru', subject: 'Pipeline Failure', body: 'Repo URL: git@github.com:anastase-yme/test.git'
+        }
+    }
+}
