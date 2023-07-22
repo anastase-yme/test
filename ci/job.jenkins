@@ -3,7 +3,12 @@ pipeline {
     stages {
         stage('Clone repository') {
             steps {
-                git branch: 'main', credentialsId: 'jenkins_git', url: 'git@github.com:anastase-yme/test.git'
+                git(
+                    url: "https://github.com/anastase-yme/test.git",
+                    branch: "main",
+                    changelog: true,
+                    poll: true
+                )
             }
         }
         stage('Create and commit log file') {
