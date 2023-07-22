@@ -19,6 +19,7 @@ pipeline {
                     sh 'git push -u origin main'
                 }
             }
+        }
     }
     post {
         success {
@@ -28,5 +29,4 @@ pipeline {
             mail to: 'fyodorova.aaee@gmail.com', subject: 'Pipeline Failure', body: 'Repo URL: git@github.com:anastase-yme/test.git'
         }
     }
-}
 }
