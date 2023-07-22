@@ -10,9 +10,15 @@ pipeline {
             steps {
                 sh 'date "+%Y-%m-%d %H:%M:%S - PRjob executed" > job.log'
                 sh 'git config --global user.email "selena_mun@mail.ru"; git config --global user.name "Anastasia"'
-                sh 'git add job.log; git commit -m "Add log"; git push origin main'
+                sh 'git add job.log; git commit -m "Add log"'
             }
         }
+        stage("Push to Git Repository") {
+            steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'git_push', gitToolName: 'Default')]) {
+                    sh 'git push -u origin main'
+                }
+            }
     }
     post {
         success {
