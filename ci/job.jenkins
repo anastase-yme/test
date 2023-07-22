@@ -13,7 +13,7 @@ pipeline {
                 sh 'git add job.log; git commit -m "Add log"'
             }
         }
-        stage("Push to Git Repository") {
+        stage('Push to Git Repository') {
             steps {
                 withCredentials([gitUsernamePassword(credentialsId: 'jenkins_git', gitToolName: 'Default')]) {
                     sh 'git push -u origin main'
