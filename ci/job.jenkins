@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Push to Git Repository') {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins_git')]) {
+                withCredentials([string(credentialsId: 'git_push_jenkins')]) {
                     sh 'git push -u origin main'
                 }
             }
