@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Create and commit log file') {
             steps {
-                sh 'date "+%Y-%m-%d %H:%M:%S - PRjob executed" > job.log'
+                sh 'date "+%Y-%m-%d %H:%M:%S - PRjob executed" >> job.log'
                 sh 'git config --global user.email "selena_mun@mail.ru"; git config --global user.name "Anastasia"'
                 sh 'git add job.log; git commit -m "Add log"'
                 sh 'git config --global http.sslVerify false'
